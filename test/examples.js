@@ -141,4 +141,15 @@ Lab.experiment('Examples', function () {
         });
     });
 
+    Lab.test('assertionCounting.js', function (done) {
+
+        ChildProcess.exec('./bin/lab examples/assertionCounting.js', function (error, stdout, stderr) {
+
+            Lab.expect(error).to.exist;
+            Lab.expect(stdout).to.contain('4 of 12 tests failed');
+            Lab.expect(stdout).to.contain('No global variable leaks detected');
+            done();
+        });
+    });
+
 });
